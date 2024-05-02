@@ -37,15 +37,15 @@ namespace gcgcg
         private Shader _shaderAzul;
 
 
-        private double x_p1 = 0.00d;
-        private double y_p1 = 0.00d;
-        private double x_p2 = 0.30d;
-        private double y_p2 = 0.30d;
-        private Ponto4D ponto1 = null;
-        private Ponto4D ponto2 = null;
+        // private double x_p1 = 0.00d;
+        // private double y_p1 = 0.00d;
+        // private double x_p2 = 0.30d;
+        // private double y_p2 = 0.30d;
+        // private Ponto4D ponto1 = null;
+        // private Ponto4D ponto2 = null;
 
-        private SrPalito srPalito = null;
-        private Spline spline = null;
+        // private SrPalito srPalito = null;
+        // private Spline spline = null;
 
         private BBoxNadir bbox = null;
 
@@ -76,60 +76,6 @@ namespace gcgcg
             _shaderVerde = new Shader("Shaders/shader.vert", "Shaders/shaderVerde.frag");
             _shaderAzul = new Shader("Shaders/shader.vert", "Shaders/shaderAzul.frag");
             #endregion
-
-            // #region Objeto: polígono qualquer  
-            // List<Ponto4D> pontosPoligono =
-            // [
-            //     new Ponto4D(0.25, 0.25),
-            //     new Ponto4D(0.75, 0.25),
-            //     new Ponto4D(0.75, 0.75),
-            //     new Ponto4D(0.50, 0.50),
-            //     new Ponto4D(0.25, 0.75),
-            // ];
-            // objetoSelecionado = new Poligono(mundo, ref rotuloAtual, pontosPoligono);
-            // #endregion
-            // #region NÃO USAR: declara um objeto filho ao polígono
-            // objetoSelecionado = new Ponto(objetoSelecionado, ref rotuloAtual, new Ponto4D(0.50, 0.75));
-            // objetoSelecionado.ToString();
-            // #endregion
-
-            // #region Objeto: retângulo  
-            // objetoSelecionado = new Retangulo(mundo, ref rotuloAtual, new Ponto4D(-0.25, 0.25), new Ponto4D(-0.75, 0.75))
-            // {
-            //     PrimitivaTipo = PrimitiveType.LineLoop
-            // };
-            // #endregion
-
-            // #region Objeto: segmento de reta  
-            // objetoSelecionado = new SegReta(mundo, ref rotuloAtual, new Ponto4D(-0.25, -0.25), new Ponto4D(-0.75, -0.75));
-            // #endregion
-
-            // #region Objeto: ponto  
-            // objetoSelecionado = new Ponto(mundo, ref rotuloAtual, new Ponto4D(0.25, -0.25))
-            // {
-            //     PrimitivaTipo = PrimitiveType.Points,
-            //     PrimitivaTamanho = 10
-            // };
-            // #endregion
-
-            // ponto1 = new Ponto4D(x_p1, y_p1);
-            // ponto2 = new Ponto4D(x_p2, y_p2);
-
-            // #region Objeto: sr palito  
-            // srPalito = new(mundo, ref rotuloAtual);
-            // // reta1 = new SrPalito(mundo, ref rotuloAtual, ponto1, ponto2);
-            // // reta1.shaderObjeto = new Shader("Shaders/shader.vert", "Shaders/shaderBranca.frag");
-            // #endregion
-
-            //Os pontos iniciais são fixos. Depois só chamo atualizar
-            // #region Objeto: SrPalito  
-            // objetoSelecionado = new SrPalito(mundo, ref rotuloAtual);
-            // #endregion
-            
-            // #region Objeto: Spline
-            // spline = new Spline(mundo, ref rotuloAtual);
-            // #endregion
-
             bbox = new BBoxNadir(mundo, ref rotuloAtual);
 
 #if CG_Privado
@@ -180,19 +126,6 @@ namespace gcgcg
             {
                 Close();
             }
-            if (input.IsKeyPressed(Keys.Right))
-            {
-                // objetoSelecionado.PontosAlterar(new Ponto4D(objetoSelecionado.PontosId(0).X + 0.005, objetoSelecionado.PontosId(0).Y, 0), 0);
-                // objetoSelecionado.ObjetoAtualizar();
-            }
-            if (input.IsKeyPressed(Keys.P))
-            {
-                // Console.WriteLine(objetoSelecionado);
-            }
-            if (input.IsKeyPressed(Keys.Space))
-            {
-                // spline.AtualizarPosicao(' ');
-            }
             if (input.IsKeyPressed(Keys.C))
             {
                 bbox.AtualizarPosicao('C');
@@ -209,10 +142,6 @@ namespace gcgcg
             {
                 bbox.AtualizarPosicao('D');
             }
-            if (input.IsKeyPressed(Keys.R))
-            {
-                // spline.AtualizarPosicao('R');
-            }
             #endregion
 
             #region  Mouse
@@ -222,30 +151,30 @@ namespace gcgcg
             Ponto4D sruPonto = Utilitario.NDC_TelaSRU(janelaLargura, janelaAltura, mousePonto);
 
             //FIXME: o movimento do mouse em relação ao eixo X está certo. Mas tem um erro no eixo Y,,, aumentar o valor do Y aumenta o erro.
-            if (input.IsKeyPressed(Keys.S))
-            {
-                srPalito.AtualizarPosicao('S');
-            }
-            if (input.IsKeyPressed(Keys.A))
-            {
-                srPalito.AtualizarPosicao('A');
-            }
-            if (input.IsKeyPressed(Keys.X))
-            {
-                srPalito.AtualizarPosicao('X');
-            }
-            if (input.IsKeyPressed(Keys.Z))
-            {
-                srPalito.AtualizarPosicao('Z');
-            }
-            if (input.IsKeyPressed(Keys.Q))
-            {
-                srPalito.AtualizarPosicao('Q');
-            }
-            if (input.IsKeyPressed(Keys.W))
-            {
-                srPalito.AtualizarPosicao('W');
-            }
+            // if (input.IsKeyPressed(Keys.S))
+            // {
+            //     srPalito.AtualizarPosicao('S');
+            // }
+            // if (input.IsKeyPressed(Keys.A))
+            // {
+            //     srPalito.AtualizarPosicao('A');
+            // }
+            // if (input.IsKeyPressed(Keys.X))
+            // {
+            //     srPalito.AtualizarPosicao('X');
+            // }
+            // if (input.IsKeyPressed(Keys.Z))
+            // {
+            //     srPalito.AtualizarPosicao('Z');
+            // }
+            // if (input.IsKeyPressed(Keys.Q))
+            // {
+            //     srPalito.AtualizarPosicao('Q');
+            // }
+            // if (input.IsKeyPressed(Keys.W))
+            // {
+            //     srPalito.AtualizarPosicao('W');
+            // }
 
 
             if (input.IsKeyDown(Keys.LeftShift))

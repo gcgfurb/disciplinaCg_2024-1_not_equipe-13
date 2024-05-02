@@ -16,9 +16,6 @@ namespace gcgcg
     {
       PrimitivaTipo = PrimitiveType.LineLoop;
       PrimitivaTamanho = 1;
-
-    //   Ponto4D ptoSupEsq = new Ponto4D(ptoInfEsq.X, ptoSupDir.Y);
-    //   Ponto4D ptoInfDir = new Ponto4D(ptoSupDir.X, ptoInfEsq.Y);
       // Sentido horário
       base.PontosAdicionar(ptoInfEsq);
       base.PontosAdicionar(new Ponto4D(ptoSupDir.X, ptoInfEsq.Y));

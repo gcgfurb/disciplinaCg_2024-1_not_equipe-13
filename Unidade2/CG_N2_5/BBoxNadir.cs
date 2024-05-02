@@ -25,6 +25,7 @@ namespace gcgcg
     Shader _shaderVermelha = new Shader("Shaders/shader.vert", "Shaders/shaderVermelha.frag");
 
     Shader _shaderBranca = new Shader("Shaders/shader.vert", "Shaders/shaderBranca.frag");
+    Shader  _shaderPreta = new Shader("Shaders/shader.vert", "Shaders/shaderPreta.frag");
     private int _vertexBufferObject_bbox;
     private int _vertexArrayObject_bbox;
 
@@ -44,6 +45,7 @@ namespace gcgcg
         rotuloAtual = _rotulo;
 
       _shaderAmarela = new Shader("Shaders/shader.vert", "Shaders/shaderAmarela.frag");
+    
       // FIXME: falta deletar ..
       // GL.DeleteProgram(_shaderAmarela.Handle);
       // FIXME: deveria ser removido na classe BBox.
@@ -99,24 +101,6 @@ namespace gcgcg
       Ponto4D novoPonto = null;
 
         switch (key) {
-            case ' ':
-                // contador +=1;
-                // objetos[contador].ShaderObjeto = _shaderVermelha;
-                // objetoSelecionado = objetos[contador];
-                // if(contador > 0)
-                // {
-                //     objetos[contador - 1].ShaderObjeto = _shaderBranca;
-                // }
-                // else
-                // {
-                //     objetos[3].ShaderObjeto = _shaderBranca;
-                // }
-                // if(contador == 3)
-                // {
-                //     contador = -1;
-                // }
-                break;
-
             case 'C':
                 Ponto4D pontoAnterior = pontoMovel.getPonto();
                 double x = pontoAnterior.X;
@@ -140,8 +124,6 @@ namespace gcgcg
                   pontoMovel.AtualizarPosicao(novoPonto);
                   circuloMovel.AtualizarPosicao(novoPonto);
                 };
-
-                // PontosCurva(true);
                 break;
             case 'B':
                 Ponto4D pontoAnterior1 = pontoMovel.getPonto();
@@ -167,7 +149,6 @@ namespace gcgcg
                   pontoMovel.AtualizarPosicao(novoPonto);
                   circuloMovel.AtualizarPosicao(novoPonto);
                 };
-                // PontosCurva(true);
                 break;
             case 'E':
                 Ponto4D pontoAnterior2 = pontoMovel.getPonto();
@@ -193,7 +174,6 @@ namespace gcgcg
                   pontoMovel.AtualizarPosicao(novoPonto);
                   circuloMovel.AtualizarPosicao(novoPonto);
                 };
-                // PontosCurva(true);
                 break;
             case 'D':
                 Ponto4D pontoAnterior3 = pontoMovel.getPonto();
@@ -219,24 +199,13 @@ namespace gcgcg
                   pontoMovel.AtualizarPosicao(novoPonto);
                   circuloMovel.AtualizarPosicao(novoPonto);
                 };
-                // PontosCurva(true);
                 break;
             case 'R':
-                // , , , 
-                // objetos[0].AtualizarPosicao(new Ponto4D(-0.5, -0.5));
-                // objetos[1].AtualizarPosicao(new Ponto4D( 0.5, -0.5));
-                // objetos[2].AtualizarPosicao(new Ponto4D( 0.5,  0.5));
-                // objetos[3].AtualizarPosicao(new Ponto4D(-0.5,  0.5));
-                // PontosCurva(true);
                 break;
             default:
                 break;
 
         }
-
-        // retaEsq.AtualizarPosicao(objetos[0].getPonto(), objetos[3].getPonto());
-        // retaDir.AtualizarPosicao(objetos[1].getPonto(), objetos[2].getPonto());
-        // retaSup.AtualizarPosicao(objetos[3].getPonto(), objetos[2].getPonto());
     }
 
     private bool AtualizaQuadrado(Ponto4D novoPonto)
@@ -246,7 +215,7 @@ namespace gcgcg
       double limiteDireito = pontoSuperiorDir.X;
       double limiteEsquerdo = pontoInferiorEsq.X;
       if (novoPonto.Y > limiteSuperior || novoPonto.Y < limiteInferior || novoPonto.X > limiteDireito || novoPonto.X < limiteEsquerdo) {
-        quadrado.ShaderObjeto = _shaderVermelha;
+        quadrado.ShaderObjeto = _shaderPreta;
         return true;
       }
       else {

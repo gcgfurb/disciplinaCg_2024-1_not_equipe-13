@@ -21,6 +21,8 @@ namespace gcgcg
         private Shader _shaderBranca = new Shader("Shaders/shader.vert", "Shaders/shaderBranca.frag");
 
         private Shader _shaderPreta = new Shader("Shaders/shader.vert", "Shaders/shaderBlack.frag");
+        private Shader _shaderCiano = new Shader("Shaders/shader.vert", "Shaders/shaderCiano.frag");
+        private Shader _shaderAmarela = new Shader("Shaders/shader.vert", "Shaders/shaderAmarela.frag");
         private SegReta retaEsq = null;   
         private SegReta retaDir = null;     
         private SegReta retaSup = null; 
@@ -62,8 +64,11 @@ namespace gcgcg
        
 
         retaEsq = new SegReta(mundo, ref rotuloAtual, esqAbaixo, esqAcima);
-        retaDir = new SegReta(mundo, ref rotuloAtual, dirAbaixo, dirAcima);       
+        retaEsq.ShaderObjeto = _shaderCiano;
+        retaDir = new SegReta(mundo, ref rotuloAtual, dirAbaixo, dirAcima);
+        retaDir.ShaderObjeto = _shaderCiano;       
         retaSup = new SegReta(mundo, ref rotuloAtual, esqAcima, dirAcima);
+        retaSup.ShaderObjeto = _shaderCiano;
 
         PontosCurva(false, 0);
 
@@ -188,7 +193,7 @@ namespace gcgcg
                     if(i > 0) 
                     {
                         retasCurvaBezier[i-1].AtualizarPosicao(new Ponto4D (pontosCurvaBezier[i-1].getPonto().X, pontosCurvaBezier[i-1].getPonto().Y), new Ponto4D (pontosCurvaBezier[i].getPonto().X, pontosCurvaBezier[i].getPonto().Y));
-                        retasCurvaBezier[i-1].ShaderObjeto = _shaderBranca;
+                        retasCurvaBezier[i-1].ShaderObjeto = _shaderAmarela;
                     }
                 }
                 else
@@ -197,10 +202,10 @@ namespace gcgcg
                     {
                         PrimitivaTamanho = 1
                     };
-                    p.ShaderObjeto = _shaderBranca;
+                    p.ShaderObjeto = _shaderAmarela;
                     pontosCurvaBezier.Add(p);
                     SegReta r = new SegReta(mundo, ref rotuloAtual, new Ponto4D (pontosCurvaBezier[i-1].getPonto().X, pontosCurvaBezier[i-1].getPonto().Y), new Ponto4D (pontosCurvaBezier[i].getPonto().X, pontosCurvaBezier[i].getPonto().Y));
-                    r.ShaderObjeto = _shaderBranca;
+                    r.ShaderObjeto = _shaderAmarela;
                     retasCurvaBezier.Add(r);
                 }
             }
@@ -225,7 +230,7 @@ namespace gcgcg
                 if(i > 0) 
                 {
                     retasCurvaBezier[i-1].AtualizarPosicao(new Ponto4D (pontosCurvaBezier[i-1].getPonto().X, pontosCurvaBezier[i-1].getPonto().Y), new Ponto4D (pontosCurvaBezier[i].getPonto().X, pontosCurvaBezier[i].getPonto().Y));
-                    retasCurvaBezier[i-1].ShaderObjeto = _shaderBranca;
+                    retasCurvaBezier[i-1].ShaderObjeto = _shaderAmarela;
                 }
             
             }
@@ -242,7 +247,7 @@ namespace gcgcg
                     pontosCurvaBezier[i].AtualizarPosicao(new Ponto4D (posicaoCurva.X ,posicaoCurva.Y));
                     if(i > 0) {
                         retasCurvaBezier[i-1].AtualizarPosicao(new Ponto4D (pontosCurvaBezier[i-1].getPonto().X, pontosCurvaBezier[i-1].getPonto().Y), new Ponto4D (pontosCurvaBezier[i].getPonto().X, pontosCurvaBezier[i].getPonto().Y));
-                        retasCurvaBezier[i-1].ShaderObjeto = _shaderBranca;
+                        retasCurvaBezier[i-1].ShaderObjeto = _shaderAmarela;
                     }
                 }
                 
@@ -252,12 +257,12 @@ namespace gcgcg
                     {
                         PrimitivaTamanho = 1
                     };
-                    p.ShaderObjeto = _shaderBranca;
+                    p.ShaderObjeto = _shaderAmarela;
                     pontosCurvaBezier.Add(p);
 
                     if (i > 0) {
                         SegReta r = new SegReta(mundo, ref rotuloAtual, new Ponto4D (pontosCurvaBezier[i-1].getPonto().X, pontosCurvaBezier[i-1].getPonto().Y), new Ponto4D (pontosCurvaBezier[i].getPonto().X, pontosCurvaBezier[i].getPonto().Y));
-                        r.ShaderObjeto = _shaderBranca;
+                        r.ShaderObjeto = _shaderAmarela;
                         retasCurvaBezier.Add(r);
                     }
 
