@@ -25,7 +25,8 @@ namespace gcgcg
     Shader _shaderVermelha = new Shader("Shaders/shader.vert", "Shaders/shaderVermelha.frag");
 
     Shader _shaderBranca = new Shader("Shaders/shader.vert", "Shaders/shaderBranca.frag");
-    Shader  _shaderPreta = new Shader("Shaders/shader.vert", "Shaders/shaderPreta.frag");
+    Shader _shaderPreta = new Shader("Shaders/shader.vert", "Shaders/shaderPreta.frag");
+
     private int _vertexBufferObject_bbox;
     private int _vertexArrayObject_bbox;
 
@@ -57,7 +58,7 @@ namespace gcgcg
 
         #region Objeto: circulo
         circuloMaior = new Circulo(mundo, ref rotuloAtual, raio, pontoCentral);
-        circuloMaior.ShaderObjeto = new Shader("Shaders/shader.vert", "Shaders/shaderAmarela.frag");
+        circuloMaior.ShaderObjeto = _shaderBranca;
         #endregion
 
         double quarentaCincoGraus = 0.785398;
@@ -74,6 +75,7 @@ namespace gcgcg
             PrimitivaTamanho = 10
         };
         circuloMovel = new Circulo(mundo, ref rotuloAtual, 0.1, pontoCentralMovel);
+      
         
 
     }
@@ -105,7 +107,7 @@ namespace gcgcg
                 Ponto4D pontoAnterior = pontoMovel.getPonto();
                 double x = pontoAnterior.X;
                 double y = pontoAnterior.Y;
-                novoPonto = new Ponto4D (x, y + 0.05);
+                novoPonto = new Ponto4D (x, y + 0.02);
                 bool saiuQuadrado = AtualizaQuadrado(novoPonto);
                 
                 if (saiuQuadrado) {
@@ -129,7 +131,7 @@ namespace gcgcg
                 Ponto4D pontoAnterior1 = pontoMovel.getPonto();
                 double x1 = pontoAnterior1.X;
                 double y1 = pontoAnterior1.Y;
-                novoPonto = new Ponto4D (x1, y1 - 0.05);
+                novoPonto = new Ponto4D (x1, y1 - 0.02);
 
                 bool saiuQuadrado1 = AtualizaQuadrado(novoPonto);
 
@@ -154,7 +156,7 @@ namespace gcgcg
                 Ponto4D pontoAnterior2 = pontoMovel.getPonto();
                 double x2 = pontoAnterior2.X;
                 double y2 = pontoAnterior2.Y;
-                novoPonto = new Ponto4D (x2 - 0.05, y2);
+                novoPonto = new Ponto4D (x2 - 0.02, y2);
 
                 bool saiuQuadrado2 = AtualizaQuadrado(novoPonto);
 
@@ -179,7 +181,7 @@ namespace gcgcg
                 Ponto4D pontoAnterior3 = pontoMovel.getPonto();
                 double x3 = pontoAnterior3.X;
                 double y3 = pontoAnterior3.Y;
-                novoPonto = new Ponto4D (x3 + 0.05, y3);
+                novoPonto = new Ponto4D (x3 + 0.02, y3);
 
                 bool saiuQuadrado3 = AtualizaQuadrado(novoPonto);
 

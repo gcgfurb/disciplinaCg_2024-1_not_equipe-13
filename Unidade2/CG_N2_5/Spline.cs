@@ -16,10 +16,10 @@ namespace gcgcg
         // private Ponto4D pontoFim;
         // private double angulo = 0.7854;
 
-        private Ponto4D esqAcima;
-        private Ponto4D esqAbaixo;
-        private Ponto4D dirAcima;
-        private Ponto4D dirAbaixo;
+        // private Ponto4D esqAcima;
+        // private Ponto4D esqAbaixo;
+        // private Ponto4D dirAcima;
+        // private Ponto4D dirAbaixo;
         // private SegReta retaEsq = null;
 
         private Ponto pontoEsqAcima  = null;
@@ -54,10 +54,10 @@ namespace gcgcg
     {
         mundo = _paiRef;
         rotuloAtual = _rotulo;
-        esqAcima = esqAcima;
-        esqAbaixo = esqAbaixo;
-        dirAcima = dirAcima;
-        dirAbaixo = dirAbaixo;
+        // esqAcima = esqAcima;
+        // esqAbaixo = esqAbaixo;
+        // dirAcima = dirAcima;
+        // dirAbaixo = dirAbaixo;
 
         // #region Objeto: ponto  
         pontoEsqAcima = new Ponto(mundo, ref rotuloAtual, esqAcima);
