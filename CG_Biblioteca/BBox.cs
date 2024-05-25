@@ -31,20 +31,23 @@ namespace CG_Biblioteca
 
     public void Atualizar(Transformacao4D matriz, List<Ponto4D> pontosLista)
     {
-      Ponto4D pto = pontosLista[0];
-      pto = matriz.MultiplicarPonto(pto);
-
-      menorX = pto.X; menorY = pto.Y; menorZ = pto.Z;
-      maiorX = pto.X; maiorY = pto.Y; maiorZ = pto.Z;
-
-      for (var i = 1; i < pontosLista.Count; i++)
+      if (pontosLista.Count > 0)
       {
-        pto = pontosLista[i];
+        Ponto4D pto = pontosLista[0];
         pto = matriz.MultiplicarPonto(pto);
-        Atualizar(pto);
-      }
 
-      ProcessarCentro();
+        menorX = pto.X; menorY = pto.Y; menorZ = pto.Z;
+        maiorX = pto.X; maiorY = pto.Y; maiorZ = pto.Z;
+
+        for (var i = 1; i < pontosLista.Count; i++)
+        {
+          pto = pontosLista[i];
+          pto = matriz.MultiplicarPonto(pto);
+          Atualizar(pto);
+        }
+
+        ProcessarCentro();
+      }
     }
 
     private void Atualizar(Ponto4D pto)
@@ -70,7 +73,7 @@ namespace CG_Biblioteca
     }
 
     /// Calcula o ponto do centro da BBox.
-    public void ProcessarCentro()
+    private void ProcessarCentro()
     {
       centro.X = (maiorX + menorX) / 2;
       centro.Y = (maiorY + menorY) / 2;

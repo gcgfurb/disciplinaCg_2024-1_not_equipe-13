@@ -12,20 +12,20 @@ namespace CG_Biblioteca
     public static char TeclaUpperConsole(string msg, ref bool Control, ref bool Shift)
     {
       Console.WriteLine(msg);
-      ConsoleKeyInfo input = Console.ReadKey(true);
+      ConsoleKeyInfo estadoTeclado = Console.ReadKey(true);
 
-      if ((input.Modifiers & ConsoleModifiers.Control) == ConsoleModifiers.Control)
+      if ((estadoTeclado.Modifiers & ConsoleModifiers.Control) == ConsoleModifiers.Control)
       {
         Control = true;
       }
       else
       {
-        if ((input.Modifiers & ConsoleModifiers.Shift) == ConsoleModifiers.Shift)
+        if ((estadoTeclado.Modifiers & ConsoleModifiers.Shift) == ConsoleModifiers.Shift)
         {
           Shift = true;
         }
       }
-      return char.ToUpper(input.Key.ToString()[0]);
+      return char.ToUpper(estadoTeclado.Key.ToString()[0]);
     }
 
     // Coordenada de Dispositivo Normalizado (Normalized Device Coordinate - NDC)
@@ -46,5 +46,28 @@ namespace CG_Biblioteca
       Console.WriteLine(" [Barra de Espaço] imprimir Grafo de Cena. "); //TODO: quais teclas irei usar.
     }
 
+    public static void Diretivas()
+    {
+      Console.WriteLine("_ Diretivas de Compilação: _______ \n");
+#if CG_DEBUG
+      Console.WriteLine("Debug - versão do código para depurar");
+#endif      
+#if CG_Gizmo
+      Console.WriteLine("CG_Gizmo - objetos gráficos para depurar");
+#endif
+#if CG_OpenGL
+      Console.WriteLine("CG_OpenGL - renderizado OpenGL");
+#endif
+#if CG_OpenTK
+      Console.WriteLine("CG_OpenGL - renderizado OpenTK");
+#endif
+#if CG_DirectX
+      Console.WriteLine("CG_DirectX - renderizado DirectX");
+#endif
+#if CG_Privado
+      Console.WriteLine("CG_Privado - código do professor");
+#endif
+      Console.WriteLine("__________________________________ \n");
+    }
   }
 }

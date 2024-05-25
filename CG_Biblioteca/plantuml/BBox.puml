@@ -2,7 +2,6 @@
 class BBox {
     + BBox()
     + Atualizar(matriz:Transformacao4D, pontosLista:List<Ponto4D>) : void
-    + ProcessarCentro() : void
     + Dentro(pto:Ponto4D) : bool
     + ObterMenorX : double <<get>>
     + ObterMenorY : double <<get>>

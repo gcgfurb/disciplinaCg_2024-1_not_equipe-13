@@ -29,6 +29,16 @@ namespace CG_Biblioteca
       return raio * Math.Cos(Math.PI * 45 / 180.0);
     }
 
+    public static Ponto4D InterpolarRetaPonto(Ponto4D ptoA, Ponto4D ptoB, double t)
+    {
+      Ponto4D pto = new()
+      {
+        X = InterpolarRetaValor(ptoA.X, ptoB.X, t),
+        Y = InterpolarRetaValor(ptoA.Y, ptoB.Y, t)
+      };
+      return pto;
+    }
+
     public static bool Dentro(BBox bBox, Ponto4D pto)
     {
       if (pto.X >= bBox.ObterMenorX && pto.X <= bBox.ObterMaiorX &&
@@ -41,7 +51,7 @@ namespace CG_Biblioteca
     }
 
     // Distância Euclidiana sem a Raiz
-    public static double distanciaQuadrado(Ponto4D ptoA, Ponto4D ptoB)
+    public static double DistanciaQuadrado(Ponto4D ptoA, Ponto4D ptoB)
     {
       return (
         Math.Pow(ptoB.X - ptoA.X, 2) +
@@ -50,10 +60,10 @@ namespace CG_Biblioteca
     }
 
     // Distância Euclidiana
-    public static double distancia(Ponto4D ptoA, Ponto4D ptoB)
+    public static double Distancia(Ponto4D ptoA, Ponto4D ptoB)
     {
       return (
-        Math.Sqrt(distanciaQuadrado(ptoA, ptoB))
+        Math.Sqrt(DistanciaQuadrado(ptoA, ptoB))
       );
     }
 
@@ -62,7 +72,7 @@ namespace CG_Biblioteca
       return (yi - y1) / (y2 - y1);
     }
 
-    public static double ScanLineCalculaXi(double x1, double x2, double ti)
+    public static double InterpolarRetaValor(double x1, double x2, double ti)
     {
       return x1 + (x2 - x1) * ti;
     }
@@ -73,7 +83,7 @@ namespace CG_Biblioteca
       double ti = ScanLineInterseccao(ptoClique.Y, ptoIni.Y, ptoFim.Y);
       if (ti >= 0 && ti <= 1)    // lado do polígono (segmento) Intersecciona a ScanLine
       {
-        double xi = ScanLineCalculaXi(ptoIni.X, ptoFim.X, ti);
+        double xi = InterpolarRetaValor(ptoIni.X, ptoFim.X, ti);
         if (xi > ptoClique.X)
           return true;
       }
